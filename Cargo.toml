@@ -1,0 +1,17 @@
+[package]
+name = "thai-geography"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+license = "MIT"
+description = "Every จังหวัด, อำเภอ and ตำบล in Thailand, and correction of an address that nearly matches one."
+repository = "https://github.com/108-Plaza/thai-geography"
+keywords = ["thailand", "address", "geography", "ocr"]
+categories = ["localization", "text-processing"]
+# The dataset is the crate. Excluding it would publish something that cannot
+# answer a single question.
+include = ["src/**/*", "data/thai_geography.json", "README.md", "LICENSE"]
+
+[dependencies]
+serde_json = "1"
+serde = { version = "1", features = ["derive"] }

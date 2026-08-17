@@ -1,0 +1,21 @@
+# Everything a reader of this repository would want to know is true before a
+# change lands: it compiles, the eleven behaviour tests hold, the doc example
+# in the README actually runs, and the formatting is not a matter of opinion.
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - run: cargo fmt --check
+      - run: cargo clippy --all-targets -- -D warnings
+      # `--all-targets` skips doctests, and the README's example is a doctest.
+      - run: cargo test
