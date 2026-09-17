@@ -9,6 +9,7 @@ on:
 
 jobs:
   check:
+    # hosted-ok: public repo — the org self-hosted runner group refuses public repos by default (fork-PR risk)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
