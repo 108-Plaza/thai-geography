@@ -9,8 +9,10 @@ on:
 
 jobs:
   check:
-    # hosted-ok: public repo — the org self-hosted runner group refuses public repos by default (fork-PR risk)
-    runs-on: ubuntu-latest
+    # Self-hosted. This repo is public and the org runner group refuses public
+    # repos by default (fork-PR risk), so the job stays `queued` until the owner
+    # allows this repo in the group: an owner decision, not a workflow edit.
+    runs-on: [self-hosted, Linux, X64]
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
